@@ -1,0 +1,29 @@
+{
+  "name": "animik",
+  "version": "0.0.4",
+  "license": "MIT",
+  "dependencies": {
+    "@animik/core": "^0.0.2"
+  },
+  "type": "module",
+  "main": "./dist/index.js",
+  "typings": "./dist/index.d.ts",
+  "files": [
+    "dist",
+    "!**/*.tsbuildinfo"
+  ],
+  "nx": {
+    "name": "animik",
+    "sourceRoot": "lib/src",
+    "projectType": "library"
+  },
+  "exports": {
+    "./package.json": "./package.json",
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "types": "./dist/index.d.ts",
+  "module": "./dist/index.js"
+}
