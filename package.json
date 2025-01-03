@@ -3,10 +3,22 @@
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
+    "prepare": "husky install",
+    "fix": "eslint . --fix",
     "build": "nx affected:build --exclude=animik && nx run animik:build",
     "publish": "npm run build && nx run-many --parallel --target=nx-release-publish --all"
   },
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx}": [
+      "npm run fix",
+      "eslint --max-warnings=0"
+    ]
+  },
   "private": true,
+  "dependencies": {
+    "react": "18.3.1",
+    "react-dom": "18.3.1"
+  },
   "devDependencies": {
     "@babel/core": "^7.14.5",
     "@babel/preset-react": "^7.14.5",
@@ -31,16 +43,20 @@
     "eslint-config-prettier": "^9.0.0",
     "eslint-plugin-import": "2.31.0",
     "eslint-plugin-jsx-a11y": "6.10.1",
+    "eslint-plugin-prettier": "^5.2.1",
     "eslint-plugin-react": "7.35.0",
     "eslint-plugin-react-hooks": "5.0.0",
+    "eslint-plugin-simple-import-sort": "^12.1.1",
+    "husky": "^9.1.7",
     "jsdom": "~22.1.0",
+    "lint-staged": "^15.3.0",
     "nx": "20.3.0",
-    "prettier": "^2.6.2",
+    "prettier": "^3.4.2",
     "rollup": "^4.14.0",
     "swc-loader": "0.1.15",
     "tslib": "^2.3.0",
     "typescript": "~5.6.2",
-    "typescript-eslint": "^8.13.0",
+    "typescript-eslint": "^8.19.0",
     "verdaccio": "^5.0.4",
     "vite": "^5.0.0",
     "vite-plugin-dts": "~3.8.1",
@@ -50,10 +66,6 @@
     "lib",
     "packages/**"
   ],
-  "dependencies": {
-    "react": "18.3.1",
-    "react-dom": "18.3.1"
-  },
   "nx": {
     "includedScripts": [],
     "targets": {
